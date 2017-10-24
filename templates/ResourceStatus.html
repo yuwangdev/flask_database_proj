@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ResourceStatus</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td {
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+    <p><b>Resource Status</b></p>
+    <hr>
+
+    <p><b>Resource in use</b></p>
+    <table style="width:100%">
+        <TR>
+            <th>Resource ID</th>
+            <th>Resource Name</th>
+            <th>Incident</th>
+            <!--<th>Owner</th>-->
+            <th>Start Date</th>
+            <th>Return By</th>
+            <th>Action</th>
+        </TR>
+        {% for item in itemsInUse %}
+            <TR>
+                <TD class="c1">{{ item[0] }}</TD>
+                <TD class="c2">{{ item[1] }}</TD>
+                <TD class="c3">{{ item[2] }}</TD>
+                <TD class="c4">{{ item[3] }}</TD>
+                <TD class="c5">{{ item[4] }}</TD>
+                <TD class="c6">
+                    <form role="form" method="get" , action="/ReturnButton/{{ item[0] }}">
+                        <input type="submit", value="Return">
+                    </form>
+                </TD>
+            </TR>
+        {% endfor %}
+    </table>
+    <hr>
+
+
+    <p><b>Resource Request By Me</b></p>
+    <table style="width:100%">
+        <TR>
+            <th>Resource ID</th>
+            <th>Resource Name</th>
+            <th>Incident</th>
+            <th>Owner</th>
+            <th>Return By</th>
+            <th>Action</th>
+        </TR>
+        {% for item in requestedByMe %}
+            <TR>
+                <TD class="c1">{{ item[0] }}</TD>
+                <TD class="c2">{{ item[1] }}</TD>
+                <TD class="c3">{{ item[2] }}</TD>
+                <TD class="c4">{{ item[3] }}</TD>
+                <TD class="c5">{{ item[4] }}</TD>
+                <TD class="c6">
+                    <form role="form" method="get" , action="/ResourceRequestByMeCancelButton/{{ item[0] }}/{{ item[5] }}">
+                        <input type="submit", value="CancelResourceRequestByMe">
+                    </form>
+                </TD>
+            </TR>
+        {% endfor %}
+    </table>
+    <hr>
+
+
+    <p><b>Resource Requests Received by Me</b></p>
+    <table style="width:100%">
+        <TR>
+            <th>Resource ID</th>
+            <th>Resource Name</th>
+            <th>Incident</th>
+            <th>Request By</th>
+            <th>Return By</th>
+            <th>Action</th>
+        </TR>
+        {% for item in receivededByMeNew %}
+            <TR>
+                <TD class="c1">{{ item[0] }}</TD>
+                <TD class="c2">{{ item[1] }}</TD>
+                <TD class="c3">{{ item[2] }}</TD>
+                <TD class="c4">{{ item[3] }}</TD>
+                <TD class="c4">{{ item[4] }}</TD>
+                <TD class="c5">
+                    <span>
+                        <form role="form" method="get" , action="/RequestReceivedByMeDeployButton/{{ item[0] }}/{{ item[4] }}/{{ item[6] }}">
+                            <input type="submit", value="Deploy">
+                        </form>
+
+                        <form role="form" method="get" , action="/RequestReceivedByMeRejectButton/{{ item[0] }}/{{ item[6] }}">
+                            <input type="submit", value="Reject">
+                        </form>
+                    </span>
+                </TD>
+            </TR>
+        {% endfor %}
+    </table>
+    <hr>
+
+
+    <p><b>Repairs Scheduled/In-progress</b></p>
+    <table style="width:100%">
+        <TR>
+            <th>Resource ID</th>
+            <th>Resource Name</th>
+            <th>Start on</th>
+            <th>Ready by</th>
+            <th>Action</th>
+        </TR>
+        {% for item in repairTable %}
+            <TR>
+                <TD class="c1">{{ item[0] }}</TD>
+                <TD class="c2">{{ item[1] }}</TD>
+                <TD class="c3">{{ item[2] }}</TD>
+                <TD class="c4">{{ item[3] }}</TD>
+                <TD class="c5">
+                    <form role="form" method="get" , action="/RepairCancelButton/{{ item[0] }}">
+                        <input type="submit", value="CancelRepair">
+                    </form>
+                </TD>
+            </TR>
+        {% endfor %}
+    </table>
+    <hr>
+
+    <hr>
+    <form action="" method="post">
+        <input class="btn btn-default" type="submit" name="submit" value="BackToMainMenu">
+    </form>
+
+
+</body>
+</html>

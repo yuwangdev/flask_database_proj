@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Resource</title>
+</head>
+<body>
+    <h1>New Resource Info</h1>
+    <hr>
+    <h2>Resource ID: {{ resourceID }}</h2>
+    <h2>Owner: {{ owner }}</h2>
+
+    <form action="" method="post">
+        <p>Resource Name </p>
+        <input type="text" placeholder="Resource Name" name="resourceName" value="{{ request.form.resourceName }}">
+        <br>
+
+        <p> Primary ESF </p>
+        <select name="primaryESF">
+            {% for esf in ESFs%}
+                <option value = "{{ esf }}">{{ esf }}</option>
+            {% endfor%}
+        </select>
+
+        <p> Additional ESF </p>
+        <select name="additionalESFs" multiple>
+            {% for esf in ESFs%}
+                <option value = "{{ esf }}">{{ esf }}</option>
+            {% endfor%}
+        </select>
+
+
+        <p>Model </p>
+        <input type="text" placeholder="Model" name="model" value="{{ request.form.model }}">
+        <br>
+
+        <p> Capabilities </p>
+        <select name="capabilities" multiple>
+            {% for i in capabilities%}
+                <option value = "{{ i }}">{{ i }}</option>
+            {% endfor%}
+        </select>
+        <p>Please add capabilities using "," to separate </p>
+        <input type="text" placeholder="Add Capability" name="addCap" value="{{ request.form.addCap }}">
+        <input class="btn btn-default" type="submit" name = "submit" value="Add">
+
+
+        <p>Home Location</p>
+        <p>Lat </p>
+        <input type="text" placeholder="Latitude" name="lat" value="{{ request.form.lat }}">
+        <br>
+
+        <p>Lng </p>
+        <input type="text" placeholder="Longitude" name="lng" value="{{ request.form.lng }}">
+        <br>
+
+        <p>Cost $</p>
+        <input type="text" placeholder="Cost" name="cost" value="{{ request.form.cost }}">
+
+        <p>Cost per</p>
+        <select name="selectedUnit">
+            {% for unit in Units%}
+                <option value = "{{ unit }}">{{ unit }}</option>
+            {% endfor%}
+        </select>
+
+        <p>If No unit available, fill in yours </p>
+        <input type="text" placeholder="unit" name="unit" value="{{ request.form.unit }}">
+
+        <hr>
+        <input class="btn btn-default" type="submit" name = "submit" value="Cancel">
+        <input class="btn btn-default" type="submit" name = "submit" value="Save">
+        <br>
+    </form>
+
+
+</body>
+</html>

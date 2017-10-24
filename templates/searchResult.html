@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+
+</head>
+<body>
+
+    <p><b>Search Results for incident</b></p>
+    <p>IncidentID: {{incid}}</p>
+    <hr>
+    <!--resp = {{resp}}-->
+    <table  border="1">
+        <TR>
+            <th>ID</th>
+            <th>Owner</th>
+            <th>Cost</th>
+            <th>Status</th>
+            <th>Next Available</th>
+            <th>Distance</th>
+            <th>Action</th>
+        </TR>
+        {% for i in range(resp|length) %}
+        <TR>
+            <TD class="c1">{{resp[i][0]}}</TD>
+            <TD class="c3">{{resp[i][2]}}</TD>
+            <TD class="c4">{{resp[i][3]}}</TD>
+            <TD class="c5">{{resp[i][4]}}</TD>
+            <TD class="c6">{{resp[i][5]}}</TD>
+            <TD class="c2">{{resp[i][1]}}</TD>
+            <TD class="c7">
+                <br>
+                {% if resp[i][6] == ['deploy', 'repair'] %}
+
+                    <span>
+                        <form role="form" method="get" , action="/DeployFromSearch/{{incid}}/{{ resp[i][0] }}">
+                            <input type="submit", value="Deploy">
+                        </form>
+
+                        <form role="form" method="get" , action="/RepairFromSearch/{{incid }}/{{ resp[i][0] }}">
+                            <input type="submit", value="Repair">
+                        </form>
+                    </span>
+
+                {% endif %}
+
+                {% if resp[i][6] == ['request'] %}
+                    <form role="form" method="get" , action="/RequestFromSearch/{{ incid }}/{{ resp[i][0] }}">
+                            <input type="submit", value="Request">
+                        </form>
+                {% endif %}
+
+            </TD>
+        </TR>
+        {% endfor %}
+
+    </table>
+    <a href="/SearchResource">Return</a> <br>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>resourceReport</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+<p><b>Resoruce in use table demo</b></p>
+<hr>
+
+<table style="width:100%">
+    <TR>
+        <th>Resource ID</th>
+        <th>Resource Name</th>
+        <th>Incident</th>
+        <th>Owner</th>
+        <th>Start date</th>
+        <th>Return by</th>
+        <th>Action</th>
+    </TR>
+    {% for item in items %}
+        <TR>
+            <TD class="c1">{{ item[0] }}</TD>
+            <TD class="c2">{{ item[1] }}</TD>
+            <TD class="c3">{{ item[2] }}</TD>
+            <TD class="c4">{{ item[3] }}</TD>
+            <TD class="c2">{{ item[4] }}</TD>
+            <TD class="c3">{{ item[5] }}</TD>
+            <TD class="c4">
+                <form role="form" method="get" , action="/return/{{ item[0] }}">
+                    <input type="submit", value="return">
+                </form>
+            </TD>
+        </TR>
+    {% endfor %}
+</table>
+<hr>
+<form action="" method="post">
+    <input class="btn btn-default" type="submit" name="submit" value="Return">
+</form>
+</body>
+</html> %}

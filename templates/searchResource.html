@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Resources</title>
+</head>
+<body>
+    <h1>Search Resource</h1>
+    <hr>
+    <form action="/searchResult" method="post">
+        <p>Keyword</p>
+        <input type="text" placeholder="Keyword" name="keyword" value="{{ request.form.keyword }}">
+        <br>
+        <p> ESF</p>
+        <select name="ESF">
+            {% for esf in ESFs%}
+                <option value = "{{ esf }}">{{ esf }}</option>
+            {% endfor%}
+        </select>
+        <br>
+
+        <p>Location</p>
+            <input type="text" placeholder="15" name="distance" value="{{ request.form.distance }}">
+            <span>Kilometers of incident</span>
+        <br>
+
+        <p>Incident</p>
+        <select name="Incident">
+            {% for incident in IncidentList%}
+                <option value = "{{ incident }}">{{ incident }}</option>
+            {% endfor%}
+        </select>
+
+        <hr>
+        <input class="btn btn-default" type="submit" name = "submit" value="Cancel">
+        <input class="btn btn-default" type="submit" name = "submit" value="Search">
+        <br>
+
+    </form>
+
+
+
+
+</body>
+</html>

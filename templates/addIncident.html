@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Incident</title>
+</head>
+<body>
+    <h1>New Incident Info</h1>
+    <h2>Incident ID: {{ incidentID }}</h2> <br>
+
+    <form action="" method="post">
+        <p>Date </p>
+        <input type="text" placeholder="Date: YYYY-MM-DD" name="date" value="{{ request.form.date }}">
+        <br>
+        <p>Description </p>
+        <input type="text" placeholder="Description" name="description" value="{{ request.form.description }}">
+        <br>
+        <p>Lat </p>
+        <input type="text" placeholder="Latitude" name="lat" value="{{ request.form.lat }}">
+        <br>
+        <p>Lng </p>
+        <input type="text" placeholder="Longitude" name="lng" value="{{ request.form.lng }}">
+        <br>
+        <input class="btn btn-default" type="submit" name = "submit" value="Cancel">
+        <input class="btn btn-default" type="submit" name = "submit" value="Save">
+        <br>
+    </form>
+
+    {% if error %}
+        <p class="error"><strong>Please Retype the Incident Info with Right format</strong> {{ error }}
+    {% endif %}
+
+
+</body>
+</html>

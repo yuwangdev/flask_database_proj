@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>resourceReport</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td {
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+    <p><b>Resource Report by Primary Emergency Support Function</b></p>
+    <hr>
+
+    <table style="width:100%">
+        <TR>
+            <th>#</th>
+            <th>Primary Emergency Support Function</th>
+            <th>Total Resources</th>
+            <th>Resources in Use</th>
+        </TR>
+        {% for item in items %}
+        <TR>
+           <TD class="c1">{{item[0]}}</TD>
+           <TD class="c2">{{item[1]}}</TD>
+           <TD class="c3">{{item[2]}}</TD>
+           <TD class="c4">{{item[3]}}</TD>
+        </TR>
+        {% endfor %}
+    </table>
+    <hr>
+    <form action="" method="post">
+        <input class="btn btn-default" type="submit" name = "submit" value="Return">
+    </form>
+</body>
+</html>

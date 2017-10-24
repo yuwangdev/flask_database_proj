@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request</title>
+</head>
+<body>
+
+        <p><strong>IncidentID: </strong>{{incid}}</p>
+        <p><strong>ResourceID:</strong> {{resid}}</p>
+        <br>
+
+        <p>Please enter expected duration days for repair</p>
+
+        <form role="form" method="post"  action="">
+            <input type="text" placeholder="5" name="duration" value="{{ request.form.duration }}">
+            <br>
+
+            <input type="submit", name = "submit", value="submit">
+        </form>
+        <br>
+        <a href="/SearchResource">Return to Search</a>
+
+
+
+</body>
+</html>
